@@ -24,8 +24,8 @@ VALIDATE(){
         echo -e "$2 .... $G SUCCESS $N"
     fi
 }
-
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
+curl -sL https://rpm.nodesource.com/setup_18.x | sudo -E bash - &>>$LOGFILE
+#curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
 yum install nodejs -y &>>$LOGFILE
 VALIDATE $? "NODEJS INSTALLED"
 useradd roboshop &>>$LOGFILE
