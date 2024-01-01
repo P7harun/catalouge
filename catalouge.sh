@@ -43,12 +43,12 @@ unzip /tmp/catalogue.zip&>>$LOGFILE
 cd /app &>>$LOGFILE
 npm install  &>>$LOGFILE
 VALIDATE $? "NPM INSTALLED"
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp catalogue.service  /etc/systemd/system/catalogue.service
 systemctl daemon-reload &>>$LOGFILE
 systemctl enable catalogue &>>$LOGFILE
 VALIDATE $? "CATALOUGE ENABLED"
 systemctl start catalogue &>>$LOGFILE
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
+#cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
 VALIDATE $? "MONGO RPO COPIED"
 yum install mongodb-org-shell -y &>>$LOGFILE
 VALIDATE $? "MONOGODB-SHELL INSTALLED"
