@@ -24,6 +24,9 @@ VALIDATE(){
         echo -e "$2 .... $G SUCCESS $N"
     fi
 }
+
+yum install -y gcc-c++ make 
+
 curl -sL https://rpm.nodesource.com/setup_18.x | sudo -E bash - &>>$LOGFILE
 #curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
 yum install nodejs -y &>>$LOGFILE
