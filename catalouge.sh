@@ -24,12 +24,16 @@ VALIDATE(){
         echo -e "$2 .... $G SUCCESS $N"
     fi
 }
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash &>>$LOGFILE
+#yum install -y gcc-c++ make 
+. ~/.nvm/nvm.sh &>>$LOGFILE
+nvm install --lts &>>$LOGFILE
+VALIDATE $? "NODEJS INSTALLED"
+node -e "console.log('Running Node.js ' + process.version)" &>>$LOGFILE
 
-yum install -y gcc-c++ make 
-
-curl -sL https://rpm.nodesource.com/setup_18.x | sudo -E bash - &>>$LOGFILE
+#curl -sL https://rpm.nodesource.com/setup_18.x | sudo -E bash - &>>$LOGFILE
 #curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
-yum install nodejs -y &>>$LOGFILE
+#yum install nodejs -y &>>$LOGFILE
 VALIDATE $? "NODEJS INSTALLED"
 useradd roboshop &>>$LOGFILE
 mkdir /app &>>$LOGFILE
